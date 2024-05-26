@@ -1,5 +1,6 @@
 local M = {
   'nvimtools/none-ls.nvim',
+  commit = '18910d0',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = { 'mason.nvim' },
   opts = function()
@@ -7,18 +8,14 @@ local M = {
     local formatting = null_ls.builtins.formatting
     local diagnostics = null_ls.builtins.diagnostics
     local code_actions = null_ls.builtins.code_actions
-    -- local completion = null_ls.builtins.completion
     return {
       sources = {
         formatting.stylua,
-        formatting.prettier,
-        formatting.eslint,
-        formatting.black,
-        formatting.rustfmt,
-        diagnostics.eslint,
-        diagnostics.flake8,
-        diagnostics.tsc,
-        code_actions.eslint,
+        -- diagnostics.pylint,
+        -- formatting.black,
+        -- formatting.rustfmt,
+        -- diagnostics.flake8,
+        -- diagnostics.pylint,
         code_actions.gitsigns,
       },
     }
