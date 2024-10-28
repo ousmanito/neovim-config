@@ -1,3 +1,4 @@
+-- ------------------------------------------------ personal keymaps
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -6,29 +7,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
-
---Create keymap for format
-vim.cmd 'map <Leader>1 :lua vim.lsp.buf.format({timeout_ms = 9000})<CR>'
-
-vim.keymap.set('n', '<leader>of', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>ht', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>lg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>dq', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>cs', require('telescope.builtin').colorscheme, { desc = '[C]hange [T]heme' })
-vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
-
-vim.keymap.set('n', '<leader><leader>s', '<cmd>source ~/.config/nvim/snippets/all.lua<CR>')
-
 -- Simple keymaps
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>')
 vim.keymap.set('n', '<M-left>', ':tabprev<CR>')
@@ -36,9 +14,19 @@ vim.keymap.set('n', '<M-right>', ':tabnext<CR>')
 vim.keymap.set('n', '<leader><down>', ':sp<CR>')
 vim.keymap.set('n', '<leader><right>', ':vsp<CR>')
 vim.keymap.set('n', '<M-t>', ':term<CR>')
+vim.keymap.set('t', '<esc>', '<C-\\><C-N>')
 
--- coc.nvim
+------------------------ telescope.nvim
+vim.keymap.set('n', '<leader>of', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>ht', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>lg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>dq', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>cs', require('telescope.builtin').colorscheme, { desc = '[C]hange [T]heme' })
+vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 
+---------------------------------------------------- coc.nvim
 -- https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.lua
 
 -- Some servers have issues with backup files, see #649
@@ -111,11 +99,11 @@ vim.api.nvim_create_autocmd('CursorHold', {
 })
 
 -- Symbol renaming
--- keyset('n', '<leader>rn', '<Plug>(coc-rename)', { silent = true })
+keyset('n', '<leader>rn', '<Plug>(coc-rename)', { silent = true })
 
 -- Formatting selected code
--- keyset('x', '<leader>f', '<Plug>(coc-format-selected)', { silent = true })
--- keyset('n', '<leader>f', '<Plug>(coc-format-selected)', { silent = true })
+keyset('x', '<leader>f', '<Plug>(coc-format-selected)', { silent = true })
+keyset('n', '<leader>f', '<Plug>(coc-format-selected)', { silent = true })
 
 -- Setup formatexpr specified filetype(s)
 vim.api.nvim_create_autocmd('FileType', {
@@ -201,13 +189,13 @@ local opts = { silent = true, nowait = true }
 -- Show all diagnostics
 keyset('n', '<space>a', ':<C-u>CocList diagnostics<cr>', opts)
 -- Manage extensions
--- keyset('n', '<space>e', ':<C-u>CocList extensions<cr>', opts)
+keyset('n', '<space>e', ':<C-u>CocList extensions<cr>', opts)
 -- -- Show commands
--- keyset('n', '<space>c', ':<C-u>CocList commands<cr>', opts)
+keyset('n', '<space>C', ':<C-u>CocList commands<cr>', opts)
 -- Find symbol of current document
--- keyset('n', '<space>o', ':<C-u>CocList outline<cr>', opts)
+keyset('n', '<space>O', ':<C-u>CocList outline<cr>', opts)
 -- Search workspace symbols
--- keyset('n', '<space>s', ':<C-u>CocList -I symbols<cr>', opts)
+keyset('n', '<space>S', ':<C-u>CocList -I symbols<cr>', opts)
 -- Do default action for next item
 keyset('n', '<space>j', ':<C-u>CocNext<cr>', opts)
 -- Do default action for previous item
@@ -215,5 +203,5 @@ keyset('n', '<space>k', ':<C-u>CocPrev<cr>', opts)
 -- Resume latest coc list
 keyset('n', '<space>p', ':<C-u>CocListResume<cr>', opts)
 
--- nvim-surround
+--------------------------------------------------------------------------------- nvim-surround
 keyset('v', 'S', '<Plug>(nvim-surround-visual)')

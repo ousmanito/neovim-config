@@ -25,6 +25,8 @@ return {
           i = {
             ['<C-u>'] = false,
             ['<C-d>'] = false,
+            ['<C-Down>'] = require('telescope.actions').cycle_history_next,
+            ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
           },
         },
       },

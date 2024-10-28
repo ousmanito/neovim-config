@@ -1,8 +1,24 @@
 {
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**",
+    "$HOME/pkg/mod/**",
+    "$HOMEBREW_PREFIX/**"
+  ],
   "coc.preferences.formatOnSave": true,
-  "snippets.ultisnips.pythonPrompt": false,
   "pyright.inlayHints.variableTypes": false,
   "pyright.inlayHints.parameterTypes": false,
   "pyright.inlayHints.functionReturnTypes": false,
-  "python.linting.mypyEnabled": true
+  "python.linting.mypyEnabled": true,
+  "python.formatting.provider": "black",
+  "pyright.enable": true,
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportIncompatibleVariableOverride": "none",
+    "reportCallIssue": "none",
+    "reportAttributeAccessIssue": "none",
+    "reportOptionalMemberAccess": "none"
+  },
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "snippets.ultisnips.pythonPrompt": false
 }

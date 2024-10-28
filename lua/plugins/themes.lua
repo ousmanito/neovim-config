@@ -1,23 +1,31 @@
 return {
+
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  {
+    'rebelot/kanagawa.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    'olimorris/onedarkpro.nvim',
+    priority = 1000,
+  },
+  {
+    'uloco/bluloco.nvim',
+    lazy = false,
+    priority = 1000,
+    dependencies = { 'rktjmp/lush.nvim' },
+  },
   {
     'folke/tokyonight.nvim',
-    lazy = true,
+    lazy = false,
     priority = 1000,
+    name = 'tokyonight',
   },
   {
     'catppuccin/nvim',
-    lazy = true,
     name = 'catppuccin',
     priority = 1000,
-  },
-  {
-    'xero/miasma.nvim',
     lazy = false,
-    priority = 1000,
-  },
-  {
-    'Mofiqul/vscode.nvim',
-    lazy = false,
-    priority = 1000,
   },
 }

@@ -12,8 +12,8 @@ return {
     },
 
     keys = {
-      { '<leader>f', ':NvimTreeToggle<CR>', desc = 'See [F]iles' },
-      { '<leader>ft', ':NvimTreeFocus<CR>', desc = '[T]oggle [F]ile Explorer ' },
+      { '<leader>1', ':NvimTreeToggle<CR>', desc = 'See [F]iles' },
+      { '<leader>2', ':NvimTreeFocus<CR>', desc = '[T]oggle [F]ile Explorer ' },
     },
 
     config = function()

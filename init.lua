@@ -1,13 +1,8 @@
-require 'setup.debug'
-require 'setup.autoformat'
-
 require 'config.lazy'
 
 require('lazy').setup {
   spec = {
-
-    { 'LazyVim/LazyVim', import = 'lazyvim.plugins', opts = { colorscheme = 'catppuccin' } },
-    { import = 'lazyvim.plugins.extras.lsp.none-ls' },
+    { 'LazyVim/LazyVim', import = 'lazyvim.plugins', opts = { colorscheme = 'catppuccin-latte' } },
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
     'tpope/vim-sleuth',
@@ -19,7 +14,6 @@ require('lazy').setup {
     version = false,
   },
   checker = { enabled = true },
-  install = { colorscheme = { 'tokyonight', 'catppuccin', 'solarized' } },
   performance = {
     rtp = {
       disabled_plugins = {
