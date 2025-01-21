@@ -1,4 +1,5 @@
 {
+  "suggest.autoTrigger": "none",
   "workspace.ignoredFolders": [
     "$HOME",
     "$HOME/.cargo/**",
@@ -7,12 +8,12 @@
     "$HOMEBREW_PREFIX/**"
   ],
   "coc.preferences.formatOnSave": true,
+  "pyright.enable": true,
+  "python.linting.enabled": true,
   "pyright.inlayHints.variableTypes": false,
   "pyright.inlayHints.parameterTypes": false,
-  "pyright.inlayHints.functionReturnTypes": false,
-  "python.linting.mypyEnabled": true,
   "python.formatting.provider": "black",
-  "pyright.enable": true,
+  "pyright.organizeimports.provider": "ruff",
   "python.analysis.diagnosticSeverityOverrides": {
     "reportIncompatibleVariableOverride": "none",
     "reportCallIssue": "none",

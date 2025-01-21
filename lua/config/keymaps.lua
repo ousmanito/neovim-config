@@ -9,22 +9,48 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- Simple keymaps
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>')
-vim.keymap.set('n', '<M-left>', ':tabprev<CR>')
-vim.keymap.set('n', '<M-right>', ':tabnext<CR>')
+vim.keymap.set('n', '<M-[>', ':tabprev<CR>')
+vim.keymap.set('n', '<M-]>', ':tabnext<CR>')
 vim.keymap.set('n', '<leader><down>', ':sp<CR>')
 vim.keymap.set('n', '<leader><right>', ':vsp<CR>')
 vim.keymap.set('n', '<M-t>', ':term<CR>')
 vim.keymap.set('t', '<esc>', '<C-\\><C-N>')
+vim.keymap.set('n', '<leader>4', ':bufdo bd<CR>')
+vim.keymap.set('n', '<leader>3', ':bd<CR>')
+vim.keymap.set('n', ']p', ':bnext<CR>')
+vim.keymap.set('n', '[p', ':bprev<CR>')
+
+vim.keymap.set('n', ']w', ':vertical resize +3<CR>')
+vim.keymap.set('n', '[w', ':vertical resize -3<CR>')
+
+vim.keymap.set('n', ']W', ':vertical resize +7<CR>')
+vim.keymap.set('n', '[W', ':vertical resize -7<CR>')
+
+vim.keymap.set('n', ']h', ':resize +3<CR>')
+vim.keymap.set('n', '[h', ':resize -3<CR>')
+
+vim.keymap.set('n', ']H', ':resize +7<CR>')
+vim.keymap.set('n', '[H', ':resize -7<CR>')
 
 ------------------------ telescope.nvim
 vim.keymap.set('n', '<leader>of', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>ht', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>lg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+
+vim.keymap.set('n', '<leader>sd', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
+
+vim.keymap.set('n', '<leader>.', function()
+  require('telescope.builtin').find_files { cwd = require('telescope.utils').buffer_dir() }
+end, { desc = '[F]ind [F]iles (buffer dir)' })
+vim.keymap.set('n', '<leader>>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles (cwd)' })
+
+vim.keymap.set('n', '<leader>/', require('telescope.builtin').live_grep, { desc = 'Search by Grep (cwd)' })
+vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = '[G]it [S]tatus' })
+
 vim.keymap.set('n', '<leader>dq', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>cs', require('telescope.builtin').colorscheme, { desc = '[C]hange [T]heme' })
 vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
+vim.keymap.set('n', '<leader>sm', require('telescope.builtin').marks, { desc = '[S]earch [M]arks' })
+vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [R]egisters' })
 
 ---------------------------------------------------- coc.nvim
 -- https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.lua
@@ -187,7 +213,7 @@ vim.opt.statusline:prepend "%{coc#status()}%{get(b:,'coc_current_function','')}"
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true }
 -- Show all diagnostics
-keyset('n', '<space>a', ':<C-u>CocList diagnostics<cr>', opts)
+keyset('n', '<space>D', ':<C-u>CocList diagnostics<cr>', opts)
 -- Manage extensions
 keyset('n', '<space>e', ':<C-u>CocList extensions<cr>', opts)
 -- -- Show commands
