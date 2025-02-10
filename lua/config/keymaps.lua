@@ -33,6 +33,28 @@ vim.keymap.set('n', ']H', ':resize +7<CR>')
 vim.keymap.set('n', '[H', ':resize -7<CR>')
 
 ------------------------ telescope.nvim
+
+---Telescope action helper to open single or multiple files
+---@param bufnr integer Telescope prompt buffer number
+local function telescope_open_single_or_multi(bufnr)
+  local actions = require 'telescope.actions'
+  local actions_state = require 'telescope.actions.state'
+  local single_selection = actions_state.get_selected_entry()
+  local multi_selection = actions_state.get_current_picker(bufnr):get_multi_selection()
+  if not vim.tbl_isempty(multi_selection) then
+    actions.close(bufnr)
+    for _, file in pairs(multi_selection) do
+      if file.path ~= nil then
+        vim.cmd(string.format('edit %s', file.path))
+      end
+    end
+    vim.cmd(string.format('edit %s', single_selection.path))
+  else
+    actions.select_default(bufnr)
+  end
+end
+
+vim.keymap.set('i', '<CR>', telescope_open_single_or_multi)
 vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
 vim.keymap.set('n', '<leader>sm', require('telescope.builtin').marks, { desc = '[S]earch [M]arks' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').registers, { desc = '[S]earch [R]egisters' })
