@@ -57,6 +57,7 @@ vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc =
 vim.keymap.set('n', '<leader>ca', '<cmd>CodeCompanionActions<cr>')
 vim.keymap.set('n', '<LocalLeader>ct', '<cmd>CodeCompanionChat Toggle<cr>')
 vim.keymap.set('v', 'ga', '<cmd>CodeCompanionChat Add<cr>')
+vim.cmd [[cab cc CodeCompanion]]
 
 ---------------------------------------------------- coc.nvim
 -- https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.lua
