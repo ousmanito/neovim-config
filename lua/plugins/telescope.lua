@@ -13,6 +13,7 @@ return {
             ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
           },
         },
+        path_display = { 'truncate' },
       },
     }
   end,
