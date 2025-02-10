@@ -33,25 +33,25 @@ vim.keymap.set('n', ']H', ':resize +7<CR>')
 vim.keymap.set('n', '[H', ':resize -7<CR>')
 
 ------------------------ telescope.nvim
-vim.keymap.set('n', '<leader>of', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
-
-vim.keymap.set('n', '<leader>.', function()
-  require('telescope.builtin').find_files { cwd = require('telescope.utils').buffer_dir() }
-end, { desc = '[F]ind [F]iles (buffer dir)' })
-vim.keymap.set('n', '<leader>>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles (cwd)' })
-
-vim.keymap.set('n', '<leader>/', require('telescope.builtin').live_grep, { desc = 'Search by Grep (cwd)' })
-vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = '[G]it [S]tatus' })
-
-vim.keymap.set('n', '<leader>dq', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>cs', require('telescope.builtin').colorscheme, { desc = '[C]hange [T]heme' })
 vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
 vim.keymap.set('n', '<leader>sm', require('telescope.builtin').marks, { desc = '[S]earch [M]arks' })
-vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [R]egisters' })
+vim.keymap.set('n', '<leader>sr', require('telescope.builtin').registers, { desc = '[S]earch [R]egisters' })
 
+vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
+
+vim.keymap.set('n', '<leader>sd', require('telescope.builtin').help_tags, { desc = '[S]earch [D]ocs' })
+vim.keymap.set('n', '<leader>sM', require('telescope.builtin').man_pages, { desc = '[M]an [P]ages' })
+
+vim.keymap.set('n', '<leader>of', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>.', function()
+  require('telescope.builtin').find_files { cwd = require('telescope.utils').buffer_dir() }
+end, { desc = 'Find Files (buffer dir)' })
+vim.keymap.set('n', '<leader>>', require('telescope.builtin').find_files, { desc = 'Search Files (cwd)' })
+vim.keymap.set('n', '<leader>/', require('telescope.builtin').live_grep, { desc = 'Fuzzy Search' })
+
+vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = '[G]it [S]tatus' })
+
+vim.keymap.set('n', '<leader>cs', require('telescope.builtin').colorscheme, { desc = '[C]olor [S]cheme' })
 ---------------------- codecompanion
 
 vim.keymap.set('n', '<leader>ca', '<cmd>CodeCompanionActions<cr>')
