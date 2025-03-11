@@ -2,6 +2,7 @@
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set('i', 'jk', '<Esc>', { noremap = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -63,6 +64,8 @@ vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc =
 
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').help_tags, { desc = '[S]earch [D]ocs' })
 vim.keymap.set('n', '<leader>sM', require('telescope.builtin').man_pages, { desc = '[M]an [P]ages' })
+
+vim.keymap.set('n', '<leader>qf', require('telescope.builtin').quickfix, { desc = '[Q]uick [F]ix List' })
 
 vim.keymap.set('n', '<leader>of', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>.', function()
