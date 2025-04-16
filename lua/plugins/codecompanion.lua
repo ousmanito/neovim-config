@@ -10,7 +10,7 @@ return {
         return require('codecompanion.adapters').extend('openai', {
           schema = {
             model = {
-              default = 'o3-mini-2025-01-31',
+              default = 'o3-mini',
             },
           },
         })
@@ -49,15 +49,17 @@ return {
           {
             role = 'system',
             content = function(context)
-              return 'I want you to act as a senior '
+              return 'Je veux que tu agisses en tant que développeur senior en '
                 .. context.filetype
-                .. ' developer. Generate a structured test case document (Markdown format) for software application testing (if the file contains any). The result text should include the following sections:\n\n'
-                .. '1. Test Case: The high-level category or context of the test (e.g. "User Authentication", "API Configuration").\n'
-                .. '2. Test Name: A descriptive and unique name for the individual test (e.g. `test_user_login_success`).\n'
-                .. '3. Scenario Description: A brief explanation of what is being tested and why.\n'
-                .. '4. Prerequisites: The conditions or setup required before executing the test (e.g. installed dependencies, running services).\n'
-                .. '5. Expected Result: The expected outcome that would confirm the test has passed.\n'
-                .. '6. Comment: Optional additional notes, such as links to documentation or tips for debugging.\n\n'
+                .. ". Génère un document Markdown de cas de test (en français) structuré pour les tests d'une application logicielle.\n"
+                .. " J'aimerais que tu fasses un saut de ligne avant le contenu de chaque section pour que ce soit plus simple de copier le contenu via vim (Y), pour cette raison je ne veux aucune identation."
+                .. 'Le texte généré doit inclure les sections suivantes :\n\n'
+                .. '1. Cas de test : La catégorie ou le contexte général du test (par ex. "Authentification utilisateur", "Configuration de l\'API").\n'
+                .. '2. Nom du test : Un nom descriptif et unique pour chaque test individuel (par ex. `test_connexion_utilisateur_reussie`).\n'
+                .. '3. Description du scénario : Une brève explication de ce qui est testé et pourquoi.\n'
+                .. "4. Prérequis : Les conditions ou la configuration nécessaires avant d'exécuter le test (par ex. dépendances installées, services en cours d'exécution).\n"
+                .. '5. Résultat attendu : Le résultat attendu qui confirme que le test a réussi.\n'
+                .. '6. Commentaire : Notes supplémentaires facultatives, comme des liens vers la documentation ou des conseils de débogage.\n\n'
             end,
             opts = {
               visible = true,
@@ -67,7 +69,7 @@ return {
             role = 'user',
             content = function(context)
               local text = require('codecompanion.helpers.actions').get_code(context.start_line, context.end_line)
-              return 'Here is the file with my unit tests that I would like to document according to the system prompt :\n\n```'
+              return "Voici le fichier avec mes tests unitaires que j'aimerais documenter selon l'invite système."
                 .. context.filetype
                 .. '\n'
                 .. text
