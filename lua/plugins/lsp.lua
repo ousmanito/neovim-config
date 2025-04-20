@@ -29,36 +29,36 @@ return { -- Main LSP Configuration
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
-        map('<leader>cac', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+        map('<leader>ga', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
         -- Find references for the word under your cursor.
-        map('<LocalLeader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
-        map('<LocalLeader>gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
-        map('<LocalLeader>gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
-        map('<LocalLeader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
-        map('<LocalLeader>ds', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
 
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
-        map('<LocalLeader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+        map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
 
         -- Jump to the type of the word under your cursor.
         --  Useful when you're not sure what type a variable is and you want to see
         --  the definition of its *type*, not where it was *defined*.
-        map('<LocalLeader>td', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+        map('<leader>td', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client
@@ -159,20 +159,38 @@ return { -- Main LSP Configuration
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
-      pyright = {},
+      pyright = {
+        settings = {
+          pyright = {
+            linting = {
+              enabled = true,
+            },
+            inlayHints = {
+              variableTypes = false,
+              paramterTypes = false,
+            },
+          },
+          python = {
+            analysis = {
+              diagnosticSeverityOverrides = {
+                reportIncompatibleVariableOverride = 'none',
+                reportCallIssue = 'none',
+                reportAttributeAccessIssue = 'none',
+                reportOptionalMemberAccess = 'none',
+              },
+            },
+          },
+        },
+      },
       rust_analyzer = {},
 
       lua_ls = {
-        -- cmd = { ... },
-        -- filetypes = { ... },
-        -- capabilities = {},
         settings = {
           Lua = {
             completion = {
               callSnippet = 'Replace',
             },
-            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
+            diagnostics = { disable = { 'missing-fields' } },
           },
         },
       },
