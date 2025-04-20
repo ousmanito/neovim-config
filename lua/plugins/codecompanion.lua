@@ -1,3 +1,7 @@
+local s = 1
+
+print(s)
+
 return {
   'olimorris/codecompanion.nvim',
   dependencies = {

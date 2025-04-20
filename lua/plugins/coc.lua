@@ -1,6 +1,5 @@
-local M = {
+return {
   'neoclide/coc.nvim',
   branch = 'release',
+  enabled = false,
 }
-
-return M
