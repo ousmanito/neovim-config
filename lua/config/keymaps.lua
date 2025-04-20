@@ -55,7 +55,24 @@ vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { des
 
 vim.keymap.set('n', '<leader>cs', require('telescope.builtin').colorscheme, { desc = '[C]olor [S]cheme' })
 
----------------------- codecompanion
+-- luasnip
+
+local ls = require 'luasnip'
+
+vim.keymap.set({ 'i', 's' }, '<C-L>', function()
+  ls.jump(1)
+end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<C-J>', function()
+  ls.jump(-1)
+end, { silent = true })
+
+vim.keymap.set({ 'i', 's' }, '<C-E>', function()
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
+end, { silent = true })
+
+-- codecompanion
 vim.keymap.set('n', '<leader>ca', '<cmd>CodeCompanionActions<cr>')
 vim.keymap.set('n', '<LocalLeader>ct', '<cmd>CodeCompanionChat Toggle<cr>')
 vim.keymap.set('v', 'ga', '<cmd>CodeCompanionChat Add<cr>')
