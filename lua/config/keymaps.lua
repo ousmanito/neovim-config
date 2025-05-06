@@ -80,3 +80,8 @@ vim.cmd [[cab cc CodeCompanion]]
 
 -- nvim-surround
 vim.keymap.set('v', 'S', '<Plug>(nvim-surround-visual)')
+
+-- ts-tools
+vim.keymap.set('n', '<leader>mi', '<cmd>TSToolsAddMissingImports<cr>', { desc = 'Add Missing Imports' })
+vim.keymap.set('n', '<leader>oi', ':TSToolsOrganizeImports<cr>', { desc = 'Organize Imports' })
+vim.keymap.set('n', '<leader>si', ':TSToolsSortImports<cr>', { desc = 'Sort Imports' })
