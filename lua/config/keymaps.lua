@@ -7,6 +7,10 @@ vim.keymap.set('i', 'jk', '<Esc>', { noremap = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Cycle through quickfix list items
+vim.keymap.set('n', ']e', '<Cmd>try | cnext | catch | cfirst | catch | endtry<CR>')
+vim.keymap.set('n', '[e', '<Cmd>try | cprevious | catch | clast | catch | endtry<CR>')
+
 -- Simple keymaps
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>')
 vim.keymap.set('n', '<M-[>', ':tabprev<CR>')

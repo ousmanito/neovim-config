@@ -10,7 +10,7 @@ return {
         return require('codecompanion.adapters').extend('openai', {
           schema = {
             model = {
-              default = 'o3-mini',
+              default = 'o4-mini',
             },
           },
         })

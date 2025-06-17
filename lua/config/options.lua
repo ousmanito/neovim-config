@@ -10,13 +10,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Folding options
-vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:'
-vim.o.foldcolumn = '1'
-vim.o.foldenable = true
-vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldmethod = 'expr'
+
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 
 -- [[ Setting options ]]
 -- See `:help vim.o`

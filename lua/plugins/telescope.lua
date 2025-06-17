@@ -31,7 +31,7 @@ return {
           i = {
             ['<C-Down>'] = require('telescope.actions').cycle_history_next,
             ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
-            ['<CR>'] = telescope_open_single_or_multi,
+            ['<M-CR>'] = telescope_open_single_or_multi,
           },
         },
         path_display = { 'truncate' },

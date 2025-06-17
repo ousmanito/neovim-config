@@ -23,7 +23,7 @@ return { -- Main LSP Configuration
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        map('<LocalLeader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         map(']g', vim.diagnostic.goto_next, '[G]oto Next Diagnostic')
         map('[g', vim.diagnostic.goto_prev, '[G]oto Previous Diagnostic')
 
