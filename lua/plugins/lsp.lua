@@ -159,31 +159,9 @@ return { -- Main LSP Configuration
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
-      pyright = {
-        settings = {
-          pyright = {
-            linting = {
-              enabled = true,
-            },
-            inlayHints = {
-              variableTypes = false,
-              paramterTypes = false,
-            },
-          },
-          python = {
-            analysis = {
-              diagnosticSeverityOverrides = {
-                reportIncompatibleVariableOverride = 'none',
-                reportCallIssue = 'none',
-                reportAttributeAccessIssue = 'none',
-                reportOptionalMemberAccess = 'none',
-              },
-            },
-          },
-        },
-      },
+      basedpyright = {},
       rust_analyzer = {},
-
+      ruff = {},
       lua_ls = {
         settings = {
           Lua = {

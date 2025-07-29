@@ -47,6 +47,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sM', require('telescope.builtin').man_pages, { desc = '[M]an [P]ages' })
 
 vim.keymap.set('n', '<leader>qf', require('telescope.builtin').quickfix, { desc = '[Q]uick [F]ix List' })
+vim.keymap.set('n', '<leader>se', require('telescope.builtin').diagnostics, { desc = '[S]earch [E]rrors' })
 
 vim.keymap.set('n', '<leader>of', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>.', function()
