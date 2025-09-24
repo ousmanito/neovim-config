@@ -2,7 +2,7 @@ require 'config.lazy'
 
 require('lazy').setup {
   spec = {
-    { 'LazyVim/LazyVim', import = 'lazyvim.plugins', opts = { colorscheme = 'catppuccin-latte' } },
+    { 'LazyVim/LazyVim', import = 'lazyvim.plugins', opts = { colorscheme = 'tokyonight-day' } },
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
     'tpope/vim-sleuth',

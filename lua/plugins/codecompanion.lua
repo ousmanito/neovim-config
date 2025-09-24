@@ -33,15 +33,13 @@ return {
     },
 
     prompt_library = {
-      ['Recettes'] = {
+      ['Describe Test Cases'] = {
         strategy = 'chat',
         description = 'Documente les tests unitaires afin de compléter le cahier de recettes.',
         opts = {
-          is_default = true,
-          is_slash_cmd = false,
           modes = { 'v' },
+          short_name = 'recette',
           user_prompt = false,
-          short_name = 'doctest',
           auto_submit = true,
           stop_context_insertion = true,
         },
@@ -51,7 +49,7 @@ return {
             content = function(context)
               return 'Je veux que tu agisses en tant que développeur senior en '
                 .. context.filetype
-                .. ". Génère un document Markdown de cas de test (en français) structuré pour les tests d'une application logicielle.\n"
+                .. ". Génèrant un document Markdown de cas de test (en français) structuré pour les tests d'une application logicielle.\n"
                 .. " J'aimerais que tu fasses un saut de ligne avant le contenu de chaque section pour que ce soit plus simple de copier le contenu via vim (Y), pour cette raison je ne veux aucune identation."
                 .. 'Le texte généré doit inclure les sections suivantes :\n\n'
                 .. '1. Cas de test : La catégorie ou le contexte général du test (par ex. "Authentification utilisateur", "Configuration de l\'API").\n'
@@ -70,6 +68,7 @@ return {
             content = function(context)
               local text = require('codecompanion.helpers.actions').get_code(context.start_line, context.end_line)
               return "Voici le fichier avec mes tests unitaires que j'aimerais documenter selon l'invite système."
+                .. '\n'
                 .. context.filetype
                 .. '\n'
                 .. text

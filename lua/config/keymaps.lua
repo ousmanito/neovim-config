@@ -78,9 +78,12 @@ vim.keymap.set({ 'i', 's' }, '<C-E>', function()
 end, { silent = true })
 
 -- codecompanion
-vim.keymap.set('n', '<leader>ca', '<cmd>CodeCompanionActions<cr>')
-vim.keymap.set('n', '<LocalLeader>ct', '<cmd>CodeCompanionChat Toggle<cr>')
-vim.keymap.set('v', 'ga', '<cmd>CodeCompanionChat Add<cr>')
+vim.keymap.set({ 'n', 'v' }, '<LocalLeader>ca', '<cmd>CodeCompanionActions<cr>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<LocalLeader>ct', '<cmd>CodeCompanionChat Toggle<cr>', { noremap = true, silent = true })
+vim.keymap.set('v', 'ga', '<cmd>CodeCompanionChat Add<cr>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>dt', function()
+  require('codecompanion').prompt 'recette'
+end, { desc = '[D]escribe [T]ests' })
 vim.cmd [[cab cc CodeCompanion]]
 
 -- nvim-surround
